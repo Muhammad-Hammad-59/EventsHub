@@ -16,12 +16,18 @@ export const eventSchema = z.object({
     coverimage: z.string().url(),
     organizerProfile: z.string().min(1),
     contact: z.string().min(1),
-    RegistrationDeadline: z
-      .string()
-      .datetime({ message: "Invalid Registration Deadline" }),
+    capacity: z.number().int().min(1).nullable().default(null),
+    isFree: z.boolean().default(true),
+    price: z.number().min(0).default(0).refine(val => val >= 0, "Price cannot be negative"),
+    registrationCount: z.number().int().min(0).default(0),
+    // RegistrationDeadline: z
+    //   .string()
+    //   .datetime({ message: "Invalid Registration Deadline" }),
+    RegistrationDeadline: z.coerce.date()
+    .refine(date => date > new Date(), "Deadline must be in the future"),
     createdBy: z.string().min(1),
+    agenda: z.array(sessionSchema),
+    Speakers: z.array(speakerSchema),
   }),
 
-  agenda: z.array(sessionSchema),
-  Speakers: z.array(speakerSchema),
 });

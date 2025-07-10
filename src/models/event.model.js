@@ -1,88 +1,5 @@
-// import mongoose from "mongoose";
-
-// const SpeakerSchema = new mongoose.Schema({
-//     name: { type: String, required: true },
-//     experience: { type: String, required: true },
-//     img: { type: String, required: true },
-//     socialMedia: { type: String, required: true },
-//     expertise: { type: String, required: true },
-// });
-
-// const AgendaSchema = new mongoose.Schema({
-//     speaker: { type: mongoose.Schema.Types.ObjectId, ref: "Speaker", required: true },
-//     timeSlot: { type: String, required: true },
-//     date: { type: Date, required: true },
-//     duration: { type: String, required: true },
-// });
-
-// const EventSchema = new mongoose.Schema({
-//     title: {
-//          type: String, 
-//          required: true 
-//         },
-//     createdBy: { 
-//         type: mongoose.Schema.Types.ObjectId, 
-//         ref: "User", 
-//         required: true 
-//     },
-//     type: { 
-//         type: String, 
-//         required: true 
-//     },
-//     speakers: [SpeakerSchema],
-//     details: { 
-//         type: String, 
-//         required: true 
-//     },
-//     agenda: [AgendaSchema],
-//     configuration: { 
-//         type: String, 
-//         required: true 
-//     },
-//     // registrations: [{ 
-//     //     type: mongoose.Schema.Types.ObjectId, 
-//     //     ref: "Registration" 
-//     // }],
-//     timeAndDate: { 
-//         type: Date, 
-//         required: true 
-//     },
-//     city: {
-//         type: String,
-//         required: true
-//     },
-//     location: { 
-//         type: String, 
-//         required: true 
-//     },
-//     online: { 
-//         type: Boolean, 
-//         required: true 
-//     },
-//     coverimage: { 
-//         type: String, 
-//         required: true
-//     },
-//     organizerProfile: [{
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref:'User'
-//     }],
-//     contact: { 
-//         type: String, 
-//         required: true 
-//     },
-// }, { timestamps: true });
-
-
-// // const Event = mongoose.model("Event" , EventSchema)
-
-// // module.exports = Event
-
-// const Event = mongoose.models.Event || mongoose.model("Event", EventSchema);
-// export default Event;
-
-
-
+ 
+import { validate } from '@/lib/validate';
 import mongoose from 'mongoose';
 
 const SocialMediaSchema = new mongoose.Schema({
@@ -123,11 +40,44 @@ const EventSchema = new mongoose.Schema({
   coverimage: { type: String, required: false},
   organizerProfile: { type: String, required: true },
   contact: { type: String, required: true },
+  capacity:{ type: Number, default: null, min: 1 },
+  isFree: { type: Boolean, default: true},
+  price: { type: Number, default: 0, min: 0},
+  registrationCount: { type: Number, default: 0, min: 0 },
   RegistrationDeadline: { type: Date, required: true },
   agenda: [AgendaSchema],
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
   Speakers: [SpeakerSchema]
 }, { timestamps: true });
 
+const Speaker = mongoose.models.Speaker || mongoose.model("Speaker", SpeakerSchema);
 const Event = mongoose.models.Event || mongoose.model("Event", EventSchema);
 export default Event;
+
+
+
+// new field for event 
+
+// capacity: { 
+//     type: Number, 
+//     default: null, // null means unlimited capacity
+//     min: 1,
+//     validate: {
+//       validator: Number.isInteger,
+//       message: '{VALUE} is not an integer value'
+//     }
+//   },
+//   isFree: { 
+//     type: Boolean, 
+//     default: true 
+//   },
+//   price: {
+//     type: Number,
+//     default: 0,
+//     min: 0
+//   },
+//   registrationCount: {
+//     type: Number,
+//     default: 0,
+//     min: 0
+//   }

@@ -1,36 +1,40 @@
 import mongoose from "mongoose";
-import { stringify } from "postcss";
 
-const registrationSchema = mongoose.Schema({
+const registrationSchema = new mongoose.Schema({
     userid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"User"
+        ref: "User",
+        required: true,
     },
     eventid: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Event"
+        ref: "Event",
+        required: true,
     },
     name: {
-        type: string,
+        type: String,   
         required: true,
     },
     email: {
-        type: string,
+        type: String,   
         required: true,
     },
     phone: {
-        type: string,
+        type: String,   
         required: true,
     },
     paymentDetail: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "PaymentRecord"
+        ref: "PaymentRecord",
+    },
+    paymentStatus: {
+        type: Boolean,  
+        default: false,  
     }
-})
+}, { timestamps: true });  
+const Registration = mongoose.models.Registration || mongoose.model("Registration", registrationSchema);
 
-const Registration = mongoose.model("Registration" , registrationSchema)
-
-module.exports = Registration
+export default Registration;
 
 
 

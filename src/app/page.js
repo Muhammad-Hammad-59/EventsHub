@@ -1,19 +1,17 @@
-import Link from 'next/link'
+import BrowseByCategory from "@/components/home/browseCategory";
+ 
+import HeroPage from "@/components/home/home";
+import UpcomingEvents from "@/components/home/UpcomingEvents";
+import WhyChooseEventHub from "@/components/home/WhyChooseEventHub";
 
+  
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm flex">
-        <h1 className="text-4xl font-bold mb-8">Welcome to Our Platform</h1>
-      </div>
-      <div className="flex gap-4">
-        <Link href="/auth/login" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-          Login
-        </Link>
-        <Link href="/auth/signup" className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-          Sign Up
-        </Link>
-      </div>
+    <main className=''>
+      <HeroPage/>
+       <BrowseByCategory/>
+       <UpcomingEvents/>
+       <WhyChooseEventHub/>
     </main>
   )
 }

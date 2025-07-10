@@ -133,6 +133,7 @@ export default function HeroLoginForm() {
       const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        caedentails: "include",
         body: JSON.stringify(formData),
       });
 

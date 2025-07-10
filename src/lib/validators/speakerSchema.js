@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const speakerSchema = z.object({
-  _id: z.string().min(1, "Speaker ID is required"),
+  // _id: z.string().min(1, "Speaker ID is required"),
   name: z.string().min(1, "Speaker name is required"),
   profileImage: z.string().url("Profile Image must be a valid URL"),
   bio: z.string().min(1, "Bio is required"),

@@ -10,8 +10,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        // background: "var(--background)",
         foreground: "var(--foreground)",
+        background: '#F5F6FE',
+        backgroundSecondary: '#EDF0FE',
+        textPrimary: '#0C1B38',
+        textSecondary: '#27335A',
+        textMuted: '#B4BCD5',
+        accent: '#2563EB',
+        accentSecondary: '#041633',
+        borderColor: '#B4BCD5',
       },
     },
   },

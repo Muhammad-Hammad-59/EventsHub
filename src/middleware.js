@@ -3,8 +3,13 @@ import { NextResponse } from "next/server";
  
 
 export function middleware(req) {
+  const {method} = req
   const { pathname } = req.nextUrl;
   console.log("path in middleware",pathname)
+
+  if (method === "GET") {
+    return NextResponse.next();   
+  }
 
   if (pathname.startsWith("/api/event")) {
     const authHeader = req.headers.get("authorization");
