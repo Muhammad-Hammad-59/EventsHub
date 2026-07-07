@@ -21,14 +21,15 @@ console.log("data object value",data)
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-      {/* Step 2: Search Section */}
-   <div className="bg-backgroundSecondary w-full max-w-7xl pt-10">
+      {/* Search Section - Centered */}
+      <div className="flex justify-center mb-12">
+        <div className="w-full">
+          <SearchSection />
+        </div>
+      </div>
 
-      <SearchSection   />
-   </div>
-
-      {/* Step 3: Event Cards List */}
-      <div className="grid gap-6 mt-12 bg-white p-4 sm:p-10 rounded-xl">
+      {/* Event Cards List */}
+      <div className="grid gap-6 bg-white p-4 sm:p-10 rounded-xl">
         {
         
         isLoading ? ( <LoadingPage/>) :
@@ -43,20 +44,7 @@ console.log("data object value",data)
 
       {/* Step 4: Pagination */}
       <div className="flex justify-center p-10 gap-2 mt-10">
-         
-          {/* <button
-          
-            // className={`px-4 py-2 rounded-full border ${
-            //   currentPage === index + 1
-            //     ? "bg-accent text-white"
-            //     : "bg-white text-accent border-accent"
-            // }`}
-            onClick={() => setPage(page+1)}
-          >
-            {page+1}
-          </button> */}
-       
-       <PaginationControls totalpage={data?.totalPages || 1} />
+        <PaginationControls totalpage={data?.totalPages || 1} />
       </div>
 
     </div>

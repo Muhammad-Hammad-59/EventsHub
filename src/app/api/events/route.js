@@ -27,7 +27,7 @@ import { category } from "@/components/home/home";
   },
 };
 
-connectDB();
+
 
 //    <======= create new event ======>
 
@@ -212,6 +212,7 @@ export async function POST(req) {
 
   export async function GET(req) {
     try {
+      await connectDB();
       const url = new URL(req.url);
       const eventId = url.searchParams.get("id");
       console.log(" event id ", eventId);
@@ -257,6 +258,7 @@ export async function POST(req) {
  
   export async function PUT(req) {
       try {
+        await connectDB();
         // Verify user authentication
         const decoded = verifyToken(req);
         if (!decoded) {
@@ -298,6 +300,7 @@ export async function POST(req) {
 
     export async function DELETE(req) {
         try {
+          await connectDB();
           // Verify user authentication
           const decoded = verifyToken(req);
           if (!decoded) {

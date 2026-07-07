@@ -106,12 +106,8 @@ const EventRegistrationForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mt-20 mb-10 bg-backgroundSecondary rounded-2xl  mx-auto py-10 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-10">
-        Event Registration
-      </h1>
-
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+    <div className="bg-white rounded-2xl border border-borderColor p-8 sm:p-10">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
         {/* Basic Event Information Section */}
         <FormSection title="Basic Event Information">
           <Controller
@@ -408,10 +404,22 @@ const EventRegistrationForm = () => {
           <AgendaForm control={control} errors={errors} />
         </FormSection>
 
-        <div className="flex justify-center pt-6">
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit Registration"}
-          </Button>
+        <div className="flex items-center justify-between pt-8 border-t border-borderColor">
+          <p className="text-xs text-textMuted font-medium">All fields marked with * are required</p>
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="px-8 py-3 bg-gradient-to-r from-accent to-accent/80 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-accent/30 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-accent/20"
+          >
+            {isSubmitting ? (
+              <span className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                Creating Event...
+              </span>
+            ) : (
+              "Create Event"
+            )}
+          </button>
         </div>
       </form>
     </div>

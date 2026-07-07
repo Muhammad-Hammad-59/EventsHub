@@ -1,31 +1,20 @@
  
-import Footer from '@/components/navbar/Footer';
 import './globals.css';
 import {Providers} from "./providers";
-import Navbard from '@/components/navbar/navbar';
-import { ToastContainer } from "react-toastify";
+import LayoutShell from '@/components/LayoutShell';
 
 export const metadata = {
-  title: 'Next.js Auth App',
-  description: 'A simple authentication app with Next.js',
+  title: 'EventHub — Discover & Create Events',
+  description: 'Discover and create unforgettable events. From workshops to concerts, conferences to parties — all in one place.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
- 
         <Providers>
-          <Navbard />
-          {children}
-          <ToastContainer 
-           position="bottom-right"
-           newestOnTop
-           hideProgressBar={false}
-           autoClose={3000} />
-          <Footer/>
+          <LayoutShell>{children}</LayoutShell>
         </Providers>
-    
       </body>
     </html>
   );

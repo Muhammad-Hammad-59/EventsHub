@@ -77,7 +77,7 @@ export default function SearchSection() {
   }
    
   return (
-    <div className=" flex justify-center">
+    <div className=" flex  mt-8 justify-center">
       <div className="group max-w-2xl w-full transition-all flex items-center bg-white rounded-lg overflow-hidden shadow focus-within:ring-2 focus-within:ring-blue-500">
         <div className="flex items-center px-4 py-3 w-full">
           {/* Search Input */}

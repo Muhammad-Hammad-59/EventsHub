@@ -141,7 +141,7 @@ export async function updateEvent(eventId, updateData) {
       filter.title = { $regex: search, $options: "i" };
     }
     
-    if (category) query.category = category;
+    if (category) filter.category = category;
 
     // Get events with pagination
     const events = await Event.find(filter)

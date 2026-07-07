@@ -1,12 +1,17 @@
-const FormSection = ({ title, children }) => {
-    return (
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">{title}</h2>
-        <div className="space-y-4">
-          {children}
-        </div>
+const FormSection = ({ title, children, description }) => {
+  return (
+    <div className="bg-gradient-to-br from-background to-backgroundSecondary p-7 rounded-xl border border-borderColor hover:border-accent/20 transition-all duration-300">
+      <div className="mb-6">
+        <h2 className="text-lg font-bold text-textPrimary mb-1">{title}</h2>
+        {description && (
+          <p className="text-sm text-textMuted">{description}</p>
+        )}
       </div>
-    );
-  };
-  
-  export default FormSection;
+      <div className="space-y-6">
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export default FormSection;
